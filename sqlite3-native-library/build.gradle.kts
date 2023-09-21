@@ -6,7 +6,7 @@ plugins {
     id("signing")
 }
 
-group = "eu.simonbinder"
+group = "net.codeedu"
 version = "3.43.0"
 description = "Native sqlite3 library without JNI bindings"
 
@@ -19,13 +19,13 @@ android {
     compileSdk = 33
     ndkVersion = "25.2.9519653"
 
-    namespace = "eu.simonbinder.sqlite3_native_library"
+    namespace = "net.codeedu.sqlite3_native_library"
 
     defaultConfig {
         minSdk = 16
 
         ndk {
-            abiFilters += setOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+            abiFilters += setOf("arm64-v8a","armeabi-v7a")
         }
     }
 
@@ -101,27 +101,27 @@ publishing {
         }
     }
 
-    repositories {
-        maven {
-            name = "sonatype"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = secretProperties.getProperty("ossrhUsername")
-                password = secretProperties.getProperty("ossrhPassword")
-            }
-        }
-
-        maven {
-            name = "here"
-            url = uri("build/here/")
-        }
-    }
+//    repositories {
+//        maven {
+//            name = "sonatype"
+//            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+//            credentials {
+//                username = secretProperties.getProperty("ossrhUsername")
+//                password = secretProperties.getProperty("ossrhPassword")
+//            }
+//        }
+//
+//        maven {
+//            name = "here"
+//            url = uri("build/here/")
+//        }
+//    }
 }
 
-signing {
-    useGpgCmd()
-    sign(publishing.publications)
-}
+//signing {
+//    useGpgCmd()
+//    sign(publishing.publications)
+//}
 
 tasks.withType<AbstractPublishToMaven>() {
     dependsOn("assembleRelease")

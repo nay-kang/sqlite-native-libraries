@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6d7474b..21dab8e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -26,6 +26,8 @@ set(SOURCE_FILES
+     entry.cc
+ )
+
++set (CMAKE_POSITION_INDEPENDENT_CODE ON)
++cmake_policy(SET CMP0077 NEW)
+ OPTION(BUILD_STATIC "Option to build static lib" OFF)
+ if (IOS OR BUILD_STATIC)
+ # iOS only support static library.
