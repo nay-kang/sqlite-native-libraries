@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "net.codeedu"
-version = "3.43.0"
+version = "3.43.1"
 description = "Native sqlite3 library without JNI bindings"
 
 repositories {
