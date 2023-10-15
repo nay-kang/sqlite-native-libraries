@@ -75,13 +75,13 @@ publishing {
             pom {
                 name.set(project.name)
                 description.set(project.description)
-                url.set("https://github.com/simolus3/sqlite-native-libraries")
+                url.set("https://github.com/nay-kang/sqlite-native-libraries")
 
                 developers {
                     developer {
-                        id.set("simonbinder")
-                        name.set("Simon Binder")
-                        email.set("oss@simonbinder.eu")
+                        id.set("naykang")
+                        name.set("Nay Kang")
+                        email.set("kunvunk@gmail.com")
                     }
                 }
 
@@ -93,35 +93,35 @@ publishing {
                 }
 
                 scm {
-                    connection.set("scm:git:github.com/simolus3/sqlite-native-libraries.git")
-                    developerConnection.set("scm:git:ssh://github.com/simolus3/sqlite-native-libraries.git")
-                    url.set("https://github.com/simolus3/sqlite-native-libraries/tree/master")
+                    connection.set("scm:git:github.com/nay-kang/sqlite-native-libraries.git")
+                    developerConnection.set("scm:git:ssh://github.com/nay-kang/sqlite-native-libraries.git")
+                    url.set("https://github.com/nay-kang/sqlite-native-libraries")
                 }
             }
         }
     }
 
-//    repositories {
-//        maven {
-//            name = "sonatype"
-//            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-//            credentials {
-//                username = secretProperties.getProperty("ossrhUsername")
-//                password = secretProperties.getProperty("ossrhPassword")
-//            }
-//        }
-//
-//        maven {
-//            name = "here"
-//            url = uri("build/here/")
-//        }
-//    }
+    repositories {
+        maven {
+            name = "sonatype"
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = secretProperties.getProperty("ossrhUsername")
+                password = secretProperties.getProperty("ossrhPassword")
+            }
+        }
+
+        maven {
+            name = "here"
+            url = uri("build/here/")
+        }
+    }
 }
 
-//signing {
+signing {
 //    useGpgCmd()
-//    sign(publishing.publications)
-//}
+    sign(publishing.publications)
+}
 
 tasks.withType<AbstractPublishToMaven>() {
     dependsOn("assembleRelease")
